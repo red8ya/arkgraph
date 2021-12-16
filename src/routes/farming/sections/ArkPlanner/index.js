@@ -340,7 +340,7 @@ const ArkPlanner = ({
 											gold_demand: option_gold_demand,
 											exp_demand: option_exp_demand,
 											extra_outc: option_extra_outc,
-											exclude: ir.locale === 'zh_CN' ? [] : UNAVAILABLE_LEVELS,
+											exclude: ir.locale === 'zh_CN' ? [] : UNAVAILABLE_LEVELS[ir.locale],
 										});
 										setStatus(REQUEST_STATUS.DONE);
 										setPlan(result);
