@@ -6,3 +6,4 @@ require('./i18n/ParseItemTable');
 require('./i18n/ParseOperatorTable');
 require('./i18n/ParseEquipmentsTable');
 require('./i18n/ParseLevelList');
+require('./i18n/ParseZoneList');
