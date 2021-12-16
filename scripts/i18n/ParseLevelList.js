@@ -12,12 +12,17 @@ const stages_data = {};
 
 const readTable = (lang) => {
 	const { stages } = require(path.resolve(__dirname, `./data/${lang}/gamedata/excel/stage_table.json`));
+	const { stageList: retro_stages } = lang === 'zh_TW'
+		? { stageList: [] }
+		: require(path.resolve(__dirname, `./data/${lang}/gamedata/excel/retro_table.json`));
 	Object.entries(stages)
 		.forEach(([
 			key, value,
 		]) => {
 			const {
+				stageType,
 				code,
+				stageId,
 			} = value;
 
 			stages_data[key] = stages_data[key] || {};
@@ -25,6 +30,7 @@ const readTable = (lang) => {
 
 			stages_data[key][lang] = stages_data[key][lang] || {};
 			stages_data[key][lang].enabled = true;
+			stages_data[key][lang].is_perm = stageType !== 'ACTIVITY' || Boolean(retro_stages[stageId]);
 		});
 };
 
